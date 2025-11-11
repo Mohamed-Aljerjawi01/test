@@ -47,7 +47,7 @@ function Products() {
             </thead>
             <tbody>
                 {products.map(function (product) {
-                    return <tr>
+                    return <tr key={product.id}>
                         <td>{product.id}</td>
                         <td>{product.title}</td>
                         <td>{product.description}</td>
