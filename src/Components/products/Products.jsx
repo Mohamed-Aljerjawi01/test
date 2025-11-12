@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Products() {
 
@@ -7,7 +8,7 @@ function Products() {
 
     async function getProducts() {
         try {
-            const response = await fetch('https://dummyjson.com/products', { method: 'GET' });
+            const response = await fetch(`${import.meta.env.VITE_APIURL1}/products`, { method: 'GET' });
             const data = await response.json();
             // console.log(data.products);
             setProducts(data.products);
@@ -32,7 +33,6 @@ function Products() {
         </>
     }
 
-
     return <>
         <table width={`100%`} border={`2px`}>
             <thead>
@@ -54,6 +54,7 @@ function Products() {
                         <td>{product.category}</td>
                         <td>{product.brand}</td>
                         <td><img src={product.thumbnail} alt="" width={`200px`} height={`200px`} /></td>
+                        <td><Link className="btn btn-danger" to={`/detailsOfProduct/${product.id}`}>Detalis</Link></td>
                     </tr>
                 })}
             </tbody>
